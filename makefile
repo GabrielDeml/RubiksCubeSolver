@@ -17,7 +17,8 @@ $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 # Compile step (pattern rule)
-%.o: %.cpp %.hpp
+# Rely on compiler to track headers via includes; no forced %.hpp prerequisite
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Clean up

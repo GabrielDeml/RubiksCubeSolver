@@ -1,9 +1,9 @@
 #include <iostream>
-#include "RubicsCubeSolver.hpp"
-#include "RubicsCube.hpp"
+#include "RubiksCubeSolver.hpp"
+#include "RubiksCube.hpp"
 
 
 int main(int argc, char* argv[]) {
-    RubicsCube cube;
+    RubiksCube cube;
     return 0;
 }
