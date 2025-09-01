@@ -1,15 +1,32 @@
 #include "../include/RubiksCube.hpp"
-#include "../include/Color.hpp"
-#include "../include/Side.hpp"
 #include <iostream>
 
 // RubiksCube
-RubiksCube::RubiksCube() :
-    cube{ Side(Color('W')), Side(Color('Y')), Side(Color('R')),
-          Side(Color('O')), Side(Color('G')), Side(Color('B')) } {
-    std::cout << "RubiksCube constructor" << std::endl;
+RubiksCube::RubiksCube() {
+    reset();
 }
 
 RubiksCube::~RubiksCube() {
     std::cout << "RubiksCube destructor" << std::endl;
+}
+
+void RubiksCube::reset() {
+    for (uint8_t i = 0; i < 8; ++i) {
+        cp[i] = i;
+        co[i] = 0;
+    }
+    for (uint8_t i = 0; i < 12; ++i) {
+        ep[i] = i;
+        eo[i] = 0;
+    }
+}
+
+bool RubiksCube::isSolved() const {
+    for (uint8_t i = 0; i < 8; ++i) {
+        if (cp[i] != i || co[i] != 0) return false;
+    }
+    for (uint8_t i = 0; i < 12; ++i) {
+        if (ep[i] != i || eo[i] != 0) return false;
+    }
+    return true;
 }
