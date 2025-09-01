@@ -1,4 +1,4 @@
-#include "RubiksCubeSolver.hpp"
+#include "../include/RubiksCubeSolver.hpp"
 
 
 RubiksCubeSolver::RubiksCubeSolver() {

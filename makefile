@@ -1,13 +1,13 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17
+CXXFLAGS = -Wall -Wextra -std=c++17 -Iinclude
 
 # Executable name
 TARGET = main
 
 # Source and object files
-SRCS = $(wildcard *.cpp)
-OBJS = $(SRCS:.cpp=.o)
+SRCS = $(wildcard src/*.cpp)
+OBJS = $(SRCS:src/%.cpp=%.o)
 
 # Default target
 all: $(TARGET)
@@ -18,7 +18,7 @@ $(TARGET): $(OBJS)
 
 # Compile step (pattern rule)
 # Rely on compiler to track headers via includes; no forced %.hpp prerequisite
-%.o: %.cpp
+%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Clean up
